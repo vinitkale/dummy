@@ -81,9 +81,11 @@
                     fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
 
-                FB.login(function (response) {
-                    console.log(response);
-                });
+                function checkLoginState() {
+                    FB.api('/me', function (response) {
+                        console.log(JSON.stringify(response));
+                    });
+                }
 
             </script>
 
