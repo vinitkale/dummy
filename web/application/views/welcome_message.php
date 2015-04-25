@@ -80,9 +80,17 @@
                     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=839785072768900";
                     fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
+
+                FB.login(function (response) {
+                    console.log(response);
+                });
+
             </script>
 
-            <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+            </fb:login-button>
+
+            <!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>-->
         </div>
 
     </body>
