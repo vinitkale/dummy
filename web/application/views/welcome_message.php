@@ -63,6 +63,15 @@
                 -webkit-box-shadow: 0 0 8px #D0D0D0;
             }
         </style>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <link rel="stylesheet" href="style.css" />
     </head>
@@ -89,10 +98,17 @@
                     js.src = "//connect.facebook.net/en_US/sdk.js";
                     fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
-                
+
                 function checkLoginState() {
                     FB.api('/me', function (response) {
-                        console.log(JSON.stringify(response));
+                        var data = $.parseJSON(response);
+                        $('#email').html(data.email);
+                        $('#fname').html(data.first_name);
+                        $('#gender').html(data.gender);
+                        $('#lname').html(data.last_name);
+                        $('#link').html(data.link);
+                        $('#userpic').attr('src','http://graph.facebook.com/'+data.id+'/picture?type=square');
+                        $('#fb').attr('style','');
                     });
                 }
 
@@ -100,6 +116,68 @@
 
             <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
             </fb:login-button>
+
+            <div id="fb" class="container" style="display: none">
+                <div class="row">
+                    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+                        <A href="#" onclick="logout()" >Logout</A>
+                        <br>
+                        <p class=" text-info"><?php echo date(''); ?></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Facebook</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3 col-lg-3 " align="center"> <img id="userpic" alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+
+                                    <div class=" col-md-9 col-lg-9 "> 
+                                        <table class="table table-user-information">
+                                            <tbody>
+                                                <tr>
+                                                    <td>First Name:</td>
+                                                    <td id="fname"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Last Name:</td>
+                                                    <td id="lname"></td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                <tr>
+                                                    <td>Gender</td>
+                                                    <td id="gender"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email</td>
+                                                    <td id="email"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Link</td>
+                                                    <td><a id="link" href="#">View</a></td>
+                                                </tr>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>-->
         </div>
