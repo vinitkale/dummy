@@ -73,9 +73,45 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="style.css" />
+
     </head>
     <body>
+        <style>
+            .user-row {
+                margin-bottom: 14px;
+            }
+
+            .user-row:last-child {
+                margin-bottom: 0;
+            }
+
+            .dropdown-user {
+                margin: 13px 0;
+                padding: 5px;
+                height: 100%;
+            }
+
+            .dropdown-user:hover {
+                cursor: pointer;
+            }
+
+            .table-user-information > tbody > tr {
+                border-top: 1px solid rgb(221, 221, 221);
+            }
+
+            .table-user-information > tbody > tr:first-child {
+                border-top: 0;
+            }
+
+
+            .table-user-information > tbody > tr > td {
+                border-top: 0;
+            }
+            .toppad
+            {margin-top:20px;
+            }
+
+        </style>
 
         <div id="container">
             <div id="fb-root"></div>
@@ -107,8 +143,8 @@
                         $('#gender').html(data.gender);
                         $('#lname').html(data.last_name);
                         $('#link').html(data.link);
-                        $('#userpic').attr('src','http://graph.facebook.com/'+data.id+'/picture?type=square');
-                        $('#fb').attr('style','');
+                        $('#userpic').attr('src', 'http://graph.facebook.com/' + data.id + '/picture?type=square');
+                        $('#fb').attr('style', '');
                     });
                 }
 
@@ -146,7 +182,7 @@
                                                     <td>Last Name:</td>
                                                     <td id="lname"></td>
                                                 </tr>
-                                                
+
                                                 <tr>
                                                 <tr>
                                                     <td>Gender</td>
