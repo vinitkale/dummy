@@ -137,16 +137,16 @@
 
                 function checkLoginState() {
                     FB.api('/me', function (response) {
-                        console.log(response.email);
-                        var data = $.parseJSON(response);
-                        console.log(data);
-//                        $('#email').html(data.email);
-//                        $('#fname').html(data.first_name);
-//                        $('#gender').html(data.gender);
-//                        $('#lname').html(data.last_name);
-//                        $('#link').html(data.link);
-//                        $('#userpic').attr('src', 'http://graph.facebook.com/' + data.id + '/picture?type=square');
-//                        $('#fb').attr('style', '');
+                        
+                        var data = response;
+                        
+                        $('#email').html(data.email);
+                        $('#fname').html(data.first_name);
+                        $('#gender').html(data.gender);
+                        $('#lname').html(data.last_name);
+                        $('#link').html(data.link);
+                        $('#userpic').attr('src', 'http://graph.facebook.com/' + data.id + '/picture?type=square');
+                        $('#fb').attr('style', '');
                     });
                 }
 
